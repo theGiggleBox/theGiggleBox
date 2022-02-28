@@ -61,3 +61,9 @@ export async function fetchJokes() {
 // export async function rate(rating){
 //     const resp = await client.from('ratings').insert({ joke_id: rating.id, })
 // }
+
+export async function getGenres() {
+    const resp = await client.from('genres').select();
+    // console.log('in getGenres', resp.data);
+    return checkError(resp);
+}
