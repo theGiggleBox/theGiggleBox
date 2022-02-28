@@ -1,7 +1,7 @@
 import { fetchJokes } from './fetch-utils.js';
 
 const jokeSection = document.getElementById('joke-section');
-const joke = { joke_content: 'this is a joke, get rekt', genre: 'joke genre', id: 1 };
+// const joke = { joke_content: 'this is a joke, get rekt', genre: 'joke genre', id: 1 };
 
 //Make async
 function renderJoke(joke) {
@@ -11,7 +11,7 @@ function renderJoke(joke) {
 
     const genre = document.createElement('div');
     genre.classList.add('genre');
-    genre.textContent = `${joke.genre}`;
+    genre.textContent = `${joke.genre_id.genre}`;
 
     const jokeContent = document.createElement('div');
     jokeContent.classList.add('joke-content');
@@ -31,10 +31,16 @@ function renderJoke(joke) {
     return jokeContainer;
 }
 
-jokeSection.textContent = '';
-jokeSection.append(renderJoke(joke));
+async function renderJokes() {
+    const jokes = await fetchJokes();
+    jokeSection.textContent = '';
+    for (const joke of jokes) {
+        const jokeEl = renderJoke(joke);
+        jokeSection.append(jokeEl);
+    }
+}
 
 window.addEventListener('load', async () => {
-    const jokes = await fetchJokes();
-    console.log(jokes, 'jokes console log');
+    await renderJokes();
+    // console.log(jokes, 'jokes console log');
 });

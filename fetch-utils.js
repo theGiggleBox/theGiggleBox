@@ -48,6 +48,6 @@ function checkError({ data, error }) {
 
 export async function fetchJokes() {
     const resp = await client.from('jokes').select('*, genre_id (*)');
-    console.log(resp, 'jokes data');
+    console.log(resp.data, 'jokes data');
     return checkError(resp);
 }
