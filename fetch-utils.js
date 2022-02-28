@@ -1,5 +1,6 @@
 const SUPABASE_URL = 'https://wlciphartsabwqqpvnez.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndsY2lwaGFydHNhYndxcXB2bmV6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDU4MzM0MjcsImV4cCI6MTk2MTQwOTQyN30.SzJ2OpOQXHBDB0w9uI8_k8i-XGyJs35OAEAbQbJH3zg';
+const SUPABASE_KEY =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndsY2lwaGFydHNhYndxcXB2bmV6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDU4MzM0MjcsImV4cCI6MTk2MTQwOTQyN30.SzJ2OpOQXHBDB0w9uI8_k8i-XGyJs35OAEAbQbJH3zg';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -37,6 +38,16 @@ export async function logout() {
     return (window.location.href = '../');
 }
 
-// function checkError({ data, error }) {
-//     return error ? console.error(error) : data;
-// }
+function checkError({ data, error }) {
+    return error ? console.error(error) : data;
+}
+
+//----------------------------------------------------------------------
+// Fetch Functions
+//----------------------------------------------------------------------
+
+export async function fetchJokes() {
+    const resp = await client.from('jokes').select('*, genre_id (*)');
+    console.log(resp, 'jokes data');
+    return checkError(resp);
+}

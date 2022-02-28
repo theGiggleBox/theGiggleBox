@@ -1,3 +1,5 @@
+import { fetchJokes } from './fetch-utils.js';
+
 const jokeSection = document.getElementById('joke-section');
 const joke = { joke_content: 'this is a joke, get rekt', genre: 'joke genre', id: 1 };
 
@@ -31,3 +33,8 @@ function renderJoke(joke) {
 
 jokeSection.textContent = '';
 jokeSection.append(renderJoke(joke));
+
+window.addEventListener('load', async () => {
+    const jokes = await fetchJokes();
+    console.log(jokes, 'jokes console log');
+});
