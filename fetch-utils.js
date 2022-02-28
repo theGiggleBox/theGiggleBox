@@ -42,6 +42,7 @@ function checkError({ data, error }) {
     return error ? console.error(error) : data;
 }
 
+
 //----------------------------------------------------------------------
 // Fetch Functions
 //----------------------------------------------------------------------
@@ -51,3 +52,12 @@ export async function fetchJokes() {
     console.log(resp.data, 'jokes data');
     return checkError(resp);
 }
+
+// on click like / dislike
+// grab the id of the joke, insert a rating into the ratings table
+// insert the joke id, id of the user, rating 
+
+
+// export async function rate(rating){
+//     const resp = await client.from('ratings').insert({ joke_id: rating.id, })
+// }
