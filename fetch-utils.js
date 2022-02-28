@@ -67,3 +67,8 @@ export async function getGenres() {
     // console.log('in getGenres', resp.data);
     return checkError(resp);
 }
+
+export async function createJoke(newJoke) {
+    const resp = await client.from('jokes').insert(newJoke);
+    return checkError(resp);
+}

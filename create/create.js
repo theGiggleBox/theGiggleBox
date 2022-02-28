@@ -1,4 +1,4 @@
-import { getGenres } from '../fetch-utils.js';
+import { getGenres, getUser, createJoke } from '../fetch-utils.js';
 const jokeForm = document.getElementById('form');
 
 form.addEventListener('submit', async (e) => {
@@ -7,9 +7,11 @@ form.addEventListener('submit', async (e) => {
 
     const newJoke = {
         joke_content: newForm.get('text-box'),
-        genre_id: newForm.get('genre-select')
+        genre_id: newForm.get('genre-select'),
+        user_id: getUser().id
     };
-
+    // console.log('newJoke', newJoke);
+    await createJoke(newJoke);
 });
 
 window.addEventListener('load', async () => {
