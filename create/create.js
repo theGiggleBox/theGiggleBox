@@ -1,5 +1,5 @@
 import { getGenres, getUser, createJoke } from '../fetch-utils.js';
-const jokeForm = document.getElementById('form');
+const form = document.getElementById('form');
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -12,6 +12,8 @@ form.addEventListener('submit', async (e) => {
     };
     // console.log('newJoke', newJoke);
     await createJoke(newJoke);
+    location.replace('/');
+
 });
 
 window.addEventListener('load', async () => {
