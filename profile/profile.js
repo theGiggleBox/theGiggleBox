@@ -3,6 +3,8 @@ import { renderJoke } from '../render-utils.js';
 
 const jokeSection = document.getElementById('joke-section');
 
+
+
 window.addEventListener('load', async () => {
     const userJokes = await fetchUserJokes();
    
