@@ -42,7 +42,6 @@ function checkError({ data, error }) {
     return error ? console.error(error) : data;
 }
 
-
 //----------------------------------------------------------------------
 // Fetch Functions
 //----------------------------------------------------------------------
@@ -55,8 +54,7 @@ export async function fetchJokes() {
 
 // on click like / dislike
 // grab the id of the joke, insert a rating into the ratings table
-// insert the joke id, id of the user, rating 
-
+// insert the joke id, id of the user, rating
 
 // export async function rate(rating){
 //     const resp = await client.from('ratings').insert({ joke_id: rating.id, })
@@ -70,5 +68,11 @@ export async function getGenres() {
 
 export async function createJoke(newJoke) {
     const resp = await client.from('jokes').insert(newJoke);
+    return checkError(resp);
+}
+
+export async function deleteJoke(id) {
+    const resp = await client.from('jokes').delete().match({ id });
+    console.log(id, 'joke id');
     return checkError(resp);
 }

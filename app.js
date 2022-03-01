@@ -1,4 +1,4 @@
-import { fetchJokes } from './fetch-utils.js';
+import { fetchJokes, deleteJoke } from './fetch-utils.js';
 
 const jokeSection = document.getElementById('joke-section');
 // const joke = { joke_content: 'this is a joke, get rekt', genre: 'joke genre', id: 1 };
