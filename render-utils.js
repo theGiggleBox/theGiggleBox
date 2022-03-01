@@ -62,6 +62,7 @@ export function renderProfileJoke(joke, genres) {
         jokeContainer.classList.add('hide');
         // jokeContainer.classList.remove('joke-container');
         formContainer.classList.remove('hide');
+        // const deleteButton = document.createElement('button');
     });
 
     jokeWrapper.append(jokeContainer, formContainer);
