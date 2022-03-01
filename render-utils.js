@@ -1,8 +1,32 @@
-export function renderJoke(joke) {
+export function renderOptions(genres, location) {
+    for (let genre of genres) {
+        const option = document.createElement('option');
+        option.value = genre.id;
+        option.textContent = genre.genre;
+        location.append(option);
+    }
+}
+
+
+export function renderJoke(joke, genres) {
     // need section, genre, joke, ratings
     const jokeWrapper = document.createElement('div');
-    jokeWrapper.classList.add('jokeWrapper');
 
+    const formContainer = document.createElement('div');
+    const editForm = document.createElement('form');
+    const inputField = document.createElement('input');
+    inputField.value = joke.joke_content;
+
+    const genreSelect = document.createElement('select');
+    // render options to the select 
+    renderOptions(genres, genreSelect);
+    // append our edit input and select to the form
+    // on submit of form, pass an object to our supabase to update
+
+
+
+    const submit = document.createElement('button');
+    
     const jokeContainer = document.createElement('div');
     jokeContainer.classList.add('joke-container');
 
@@ -39,6 +63,7 @@ export function renderJoke(joke) {
         
         });
     }
+
     ratings.append(like, dislike);
     jokeContainer.append(genre, jokeContent, ratings);
     return jokeContainer;
