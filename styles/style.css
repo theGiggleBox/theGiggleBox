@@ -49,7 +49,7 @@ header {
     display: flex;
     justify-content: flex-end;
     background-color: var(--color3);
-    height: var(--header-height);
+    height: 25px;
     box-shadow: var(--shadow);
 }
 
@@ -128,4 +128,29 @@ footer {
 
 .auth-container button {
     margin: 10px;
+}
+.button {
+    border: 2px blue solid;
+    align-items: center;
+    border-radius:2px;
+    margin: 5px;
+    padding: 10px;
+    display: flex;
+}
+
+a {
+   text-decoration: none; 
+   color: black;
+}
+.logo {
+    display: flex;
+    align-self: flex-start;
+    background-image: url('../assets/gigglebox.png');
+    background-size: cover;
+    height: 120px;
+    width: 105px;
+}
+
+section {
+border: 1px;
 }
