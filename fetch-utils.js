@@ -52,6 +52,12 @@ export async function fetchJokes() {
     return checkError(resp);
 }
 
+export async function fetchUserJokes() {
+    const user_id = getUser().id;
+    const resp = await client.from('jokes').select('*, genre_id (*)').match({ user_id });
+    return checkError(resp);
+}
+
 // on click like / dislike
 // grab the id of the joke, insert a rating into the ratings table
 // insert the joke id, id of the user, rating

@@ -1,1 +1,40 @@
-s
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="../styles/reset.css" />
+        <link rel="stylesheet" href="../styles/style.css" />
+        <link rel="stylesheet" href="../styles/home.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <header>
+            <a class="button" href="/profile/"><div>Profile</div></a>
+            <a class="button" href="/create/"><div>Create</div></a>
+            <a class="button" href="/about/"><div>About Creators</div></a>
+            <a class="button" href="/auth/"><div>Sign-In/Sign-Up</div></a>
+            <div class="button" id="logout">Logout</div>
+        </header>
+        <main>
+            <div id="logo"></div>
+            <section id="joke-section">
+                <div class="joke-container">
+                    <div class="genre"></div>
+                    <div class="joke"></div>
+                    <div class="ratings">
+                        <div class="like">like</div>
+                        <div class="dislike">dislike</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <script type="module" src="./profile.js"></script>
+    </body>
+</html>
