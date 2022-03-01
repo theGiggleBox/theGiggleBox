@@ -1,6 +1,7 @@
-import { fetchJokes, deleteJoke } from './fetch-utils.js';
+import { fetchJokes, logout } from './fetch-utils.js';
 
 const jokeSection = document.getElementById('joke-section');
+const logoutButton = document.getElementById('logout');
 // const joke = { joke_content: 'this is a joke, get rekt', genre: 'joke genre', id: 1 };
 
 //Make async
@@ -39,6 +40,10 @@ async function renderJokes() {
         jokeSection.append(jokeEl);
     }
 }
+
+logoutButton.addEventListener('click', () => {
+    logout();
+});
 
 window.addEventListener('load', async () => {
     await renderJokes();
