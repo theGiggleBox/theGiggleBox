@@ -13,3 +13,5 @@ window.addEventListener('load', async () => {
     }
     
 });
+console.log(window.location.pathname);
+
