@@ -154,3 +154,13 @@ a {
 section {
 border: 1px;
 }
+
+/* .hide>*>* {
+    display: none;
+}
+.hide>* {
+    display: none;
+} */
+.hide * {
+    display: none;
+}
