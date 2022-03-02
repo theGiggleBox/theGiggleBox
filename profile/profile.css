@@ -32,9 +32,15 @@ textarea {
     /* padding: 5px; */
     /* margin: 0 auto; */
 }
-@media (min-width: 570px) {
+/* @media (max-width: 570px) {
+    #logo {
+        position: relative;
+    }
     main {
         display: flex;
         flex-direction: column;
     }
-}
+    #joke-section {
+        margin-top: 150px;
+    }
+} */
