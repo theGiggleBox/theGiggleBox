@@ -1,4 +1,4 @@
-import { getUser } from './fetch-utils.js';
+import { createRating, fetchUserRating, getUser } from './fetch-utils.js';
 
 export function renderOptions(genres, location, id) {
     for (let genre of genres) {
@@ -25,7 +25,7 @@ export function renderJoke(joke) {
     jokeContent.classList.add('joke-content');
     jokeContent.textContent = joke.joke_content;
 
-    const ratings = document.createElement('div');
+    const ratings = renderRatingDiv(joke);
     ratings.classList.add('ratings');
 
     // const like = document.createElement('div');
@@ -34,28 +34,36 @@ export function renderJoke(joke) {
     // const dislike = document.createElement('div');
     // dislike.classList.add('dislike');
 
-    // 
+    // ratings.append(like, dislike);
     jokeContainer.append(genre, jokeContent, ratings);
     return jokeContainer;
 }
 
 
-export async function renderRatingDiv(ratings){
+export function renderRatingDiv(joke){
     const div = document.createElement('div');
     const like = document.createElement('div');
+
     like.classList.add('like');
     like.addEventListener('click', async () =>{
+        const fetchedRating = await fetchUserRating(joke.id);
+        if (fetchedRating.length === 0) {
+            const userRating = {
+                liked: true,
+                user_id: getUser().id,
+                joke_id: joke.id
+            };
+            await createRating(userRating);    
+        } else if (fetchedRating.length > 0) {
+            /// enter delete function here
+            console.log('unliked');
+        }
+        // await createRating(userRating);
         //if there is no user rating create a row in ratings
         //if there is a rating then we want to update with the rating
-         for (const rating of ratings) {
-             if (rating.user_id === getUser().id) {
-             console.log(rating);  
-             }
-         }
+        console.log('length', fetchedRating.length);
     });
-    const dislike = document.createElement('div');
-    dislike.classList.add('dislike');
-    div.append(like, dislike);
-
+    div.append(like);
+    return div;
 } 
 

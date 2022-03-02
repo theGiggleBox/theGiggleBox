@@ -58,6 +58,12 @@ export async function fetchRatings() {
     return checkError(resp);
 }
 
+export async function fetchUserRating(id) {
+    const resp = await client.from('ratings').select('*').match({ joke_id: id, user_id: getUser().id });
+    console.log(resp.data, 'user rating');
+    return checkError(resp);
+}
+
 export async function fetchUserJokes() {
     const user_id = getUser().id;
     const resp = await client.from('jokes').select('*, genre_id (*)').match({ user_id });
