@@ -1,3 +1,5 @@
+import { updateJoke } from './fetch-utils.js';
+
 export function renderOptions(genres, location, id) {
     for (let genre of genres) {
         const option = document.createElement('option');
@@ -10,7 +12,6 @@ export function renderOptions(genres, location, id) {
         location.append(option);
     }
 }
-
 
 export function renderJoke(joke) {
     const jokeContainer = document.createElement('div');
@@ -47,15 +48,34 @@ export function renderProfileJoke(joke, genres) {
     formContainer.classList.add('hide');
     const editForm = document.createElement('form');
     const inputField = document.createElement('textarea');
+    inputField.name = 'booger-edit';
     inputField.value = joke.joke_content;
     // inputField.type = 'text';
     const genreSelectEl = document.createElement('select');
+    genreSelectEl.name = 'genre-booger';
     // genreSelectEl.textContent = joke.genre_id.genre;
     renderOptions(genres, genreSelectEl, joke.genre_id.id);
     // genreSelectEl.value = joke.genre_id;
     const formSubmitButton = document.createElement('button');
+    // formSubmitButton.classList.add('submit-add');
     formSubmitButton.textContent = 'Save';
+
     editForm.append(genreSelectEl, inputField, formSubmitButton);
+
+    editForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(editForm);
+        // console.log(data.get('booger-edit'), 'data test content');
+        // console.log(data.get('genre-booger'), 'data test genre');
+        const editObject = {
+            joke_content: data.get('booger-edit'),
+            genre_id: data.get('genre-booger'),
+            id: joke.id,
+        };
+        await updateJoke(editObject);
+        // renderProfileJoke(joke);
+    });
+
     formContainer.append(editForm);
 
     jokeContainer.addEventListener('click', () => {

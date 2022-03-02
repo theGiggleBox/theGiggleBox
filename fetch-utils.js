@@ -82,3 +82,9 @@ export async function deleteJoke(id) {
     console.log(id, 'joke id');
     return checkError(resp);
 }
+
+export async function updateJoke(object) {
+    const id = object.id;
+    const resp = await client.from('jokes').update(object).match({ id });
+    return checkError(resp);
+}
