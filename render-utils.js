@@ -26,15 +26,30 @@ export function renderJoke(joke) {
     const ratings = document.createElement('div');
     ratings.classList.add('ratings');
 
-    const like = document.createElement('div');
-    like.classList.add('like');
+    // const like = document.createElement('div');
+    // like.classList.add('like');
 
-    const dislike = document.createElement('div');
-    dislike.classList.add('dislike');
+    // const dislike = document.createElement('div');
+    // dislike.classList.add('dislike');
 
-    ratings.append(like, dislike);
+    // 
     jokeContainer.append(genre, jokeContent, ratings);
     return jokeContainer;
 }
 
+
+export async function renderRatingDiv(){
+    const div = document.createElement('div');
+    const like = document.createElement('div');
+    like.classList.add('like');
+    like.addEventListener('click', async () =>{
+        //if there is no user rating create a row in ratings
+        //if there is a rating then we want to update with the rating
+        
+    });
+    const dislike = document.createElement('div');
+    dislike.classList.add('dislike');
+    div.append(like, dislike);
+
+} 
 

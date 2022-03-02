@@ -52,6 +52,12 @@ export async function fetchJokes() {
     return checkError(resp);
 }
 
+export async function fetchRatings() {
+    const resp = await client.from('jokes').select('*, joke_id (*), user_id (*)');
+    console.log(resp.data, 'jokes data');
+    return checkError(resp);
+}
+
 export async function fetchUserJokes() {
     const user_id = getUser().id;
     const resp = await client.from('jokes').select('*, genre_id (*)').match({ user_id });
@@ -110,4 +116,9 @@ export function logInLogOut(element) {
             location.replace('../auth');
         });
     }
+}
+
+export async function createRating(object) {
+    const resp = await client.from('ratings').insert(object);
+    return checkError(resp);
 }
