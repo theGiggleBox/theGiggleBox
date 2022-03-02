@@ -88,3 +88,26 @@ export async function updateJoke(object) {
     const resp = await client.from('jokes').update(object).match({ id });
     return checkError(resp);
 }
+
+/// sign up / log out button function
+
+export function logInLogOut(element) {
+    const user = getUser();
+    if (user) {
+        element.textContent = 'Log Out';
+        element.addEventListener('click', () => {
+            logout();
+        });
+    } else if (window.location.pathname === '/') {
+        element.textContent = 'Sign In / Sign Up';
+        element.addEventListener('click', () => {
+            location.replace('./auth');
+        });
+    }
+    else {
+        element.textContent = 'Sign In / Sign Up';
+        element.addEventListener('click', () => {
+            location.replace('../auth');
+        });
+    }
+}

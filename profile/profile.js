@@ -1,9 +1,9 @@
-import { fetchUserJokes, getGenres } from '../fetch-utils.js';
+import { fetchUserJokes, getGenres, logInLogOut } from '../fetch-utils.js';
 import { renderJoke, renderOptions } from '../render-utils.js';
 import { deleteJoke, updateJoke } from '../fetch-utils.js';
 
 const jokeSection = document.getElementById('joke-section');
-
+const signButton = document.getElementById('sign-up');
 async function displayProfileJokes() {
     jokeSection.textContent = '';
     const userJokes = await fetchUserJokes();
@@ -15,6 +15,7 @@ async function displayProfileJokes() {
     }
 }
 
+logInLogOut(signButton);
 window.addEventListener('load', async () => {
     await displayProfileJokes();   
 });

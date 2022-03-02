@@ -1,10 +1,11 @@
-import { fetchJokes, fetchUserJokes, logout } from './fetch-utils.js';
+import { fetchJokes, fetchUserJokes, logout, logInLogOut } from './fetch-utils.js';
 import { renderJoke } from './render-utils.js';
 
 const jokeSection = document.getElementById('joke-section');
+const signButton = document.getElementById('sign-up');
 const logoutButton = document.getElementById('logout');
 // const joke = { joke_content: 'this is a joke, get rekt', genre: 'joke genre', id: 1 };
-
+logInLogOut(signButton);
 //Make async
 // function renderJoke(joke) {
 //     // need section, genre, joke, ratings
