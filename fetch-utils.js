@@ -79,7 +79,7 @@ export async function createJoke(newJoke) {
 
 export async function deleteJoke(id) {
     const resp = await client.from('jokes').delete().match({ id });
-    console.log(id, 'joke id');
+    // console.log(id, 'joke id');
     return checkError(resp);
 }
 

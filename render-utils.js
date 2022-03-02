@@ -1,4 +1,4 @@
-import { updateJoke } from './fetch-utils.js';
+import { deleteJoke, updateJoke } from './fetch-utils.js';
 
 export function renderOptions(genres, location, id) {
     for (let genre of genres) {
@@ -76,7 +76,13 @@ export function renderProfileJoke(joke, genres) {
         // renderProfileJoke(joke);
     });
 
-    formContainer.append(editForm);
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'delete';
+    deleteButton.addEventListener('click', async () => {
+        await deleteJoke(joke.id);
+        location.reload();
+    }); 
+    formContainer.append(editForm, deleteButton);
 
     jokeContainer.addEventListener('click', () => {
         jokeContainer.classList.add('hide');
