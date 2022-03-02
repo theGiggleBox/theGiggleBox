@@ -1,4 +1,3 @@
-
 body {
     /* https://coolors.co/generate and click export -> scss to get the colors to copy and paste below*/
     /* --color1: hsla(349, 69%, 76%, 1);
@@ -7,19 +6,20 @@ body {
     --color4: hsla(187, 41%, 94%, 1);
     --color5: hsla(170, 28%, 95%, 1); */
 
-    --color1: #edd400;
-    --color2: #006b5e;
-    --color3: #c4fcf0;
-    --color4: #659b90;
-    --color5: #fcf0ca;
-    
+    --color1: rgb(237, 212, 0);
+    --color2: rgb(0, 107, 94);
+    --color3: rgb(196, 252, 240);
+    --color4: rgb(101, 155, 144);
+    --color5: rgb(252, 240, 202);
+
     --header-height: 80px;
-    --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
+    --shadow: 0px 10px 20px -12px rgba(0, 0, 0, 0.45);
     --gutter: 30px;
     --footer-height: 25px;
-    
+
+    background-image: url('../assets/background-2.jpg');
     font-family: 'Titillium Web', sans-serif;
-    background-color: var(--color2);
+    background-color: var(--color4);
 }
 
 main {
@@ -28,10 +28,11 @@ main {
     justify-content: center;
     align-items: center;
     margin-bottom: calc(var(--footer-height));
+    /* background-color: rgba(101, 155, 144, 0.3); */
 }
 
 section {
-    background-color: var(--color5);
+    background-color: rgba(255, 255, 255, 0.6);
     width: 1000px;
     max-width: 80%;
     display: flex;
@@ -48,9 +49,9 @@ section {
 header {
     display: flex;
     justify-content: flex-end;
-    background-color: var(--color3);
-    height: 25px;
-    box-shadow: var(--shadow);
+    background-color: rgba(101, 155, 144, 0.3);
+    height: 30px;
+    /* box-shadow: var(--shadow); */
 }
 
 h2 {
@@ -73,7 +74,7 @@ header img {
 p {
     margin: var(--gutter);
 }
-  
+
 footer {
     position: fixed;
     width: 100%;
@@ -85,10 +86,9 @@ footer {
     box-shadow: var(--shadow);
 }
 
-  
-  @keyframes pulse {
+@keyframes pulse {
     20% {
-      transform: rotate3d(-10, -10, -10, 50deg) scale(1.2);
+        transform: rotate3d(-10, -10, -10, 50deg) scale(1.2);
     }
 
     40% {
@@ -97,13 +97,12 @@ footer {
 
     60% {
         transform: rotate3d(-10, 10, 10, 50deg) scale(1.2);
-      }
+    }
 
     80% {
         transform: rotate3d(10, 10, 10, 50deg) scale(1);
     }
-
-  }
+}
 
 #logout {
     position: fixed;
@@ -130,19 +129,25 @@ footer {
     margin: 10px;
 }
 .button {
-    border: 2px blue solid;
+    border: 2px var(--color1) solid;
+    /* background-color: rgba(237, 212, 0, 0.4); */
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
     align-items: center;
-    border-radius:2px;
-    margin: 5px;
+    font-weight: bolder;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+    margin: 2px;
+    margin-top: 5px;
     padding: 10px;
     display: flex;
 }
 
 a {
-   text-decoration: none; 
-   color: black;
+    text-decoration: none;
+    color: black;
 }
-.logo {
+#logo {
     display: flex;
     align-self: flex-start;
     background-image: url('../assets/gigglebox.png');
@@ -152,7 +157,7 @@ a {
 }
 
 section {
-border: 1px;
+    border: 1px;
 }
 
 /* .hide>*>* {
