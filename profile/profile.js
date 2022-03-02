@@ -18,7 +18,7 @@ async function displayProfileJokes() {
 window.addEventListener('load', async () => {
     await displayProfileJokes();   
 });
-// console.log(window.location.pathname);
+// console.log(window.location.pathname)
 
 function renderProfileJoke(joke, genres) {
     const jokeWrapper = document.createElement('div');
