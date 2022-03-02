@@ -73,6 +73,8 @@ export function renderProfileJoke(joke, genres) {
             id: joke.id,
         };
         await updateJoke(editObject);
+        location.reload();
+
         // renderProfileJoke(joke);
     });
 

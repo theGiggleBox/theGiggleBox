@@ -13,7 +13,6 @@ window.addEventListener('load', async () => {
         jokeSection.append(jokeEl);
 
     }
-
 });
 // console.log(window.location.pathname);
 
