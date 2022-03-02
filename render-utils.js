@@ -1,3 +1,5 @@
+import { getUser } from './fetch-utils.js';
+
 export function renderOptions(genres, location, id) {
     for (let genre of genres) {
         const option = document.createElement('option');
@@ -38,14 +40,18 @@ export function renderJoke(joke) {
 }
 
 
-export async function renderRatingDiv(){
+export async function renderRatingDiv(ratings){
     const div = document.createElement('div');
     const like = document.createElement('div');
     like.classList.add('like');
     like.addEventListener('click', async () =>{
         //if there is no user rating create a row in ratings
         //if there is a rating then we want to update with the rating
-        
+         for (const rating of ratings) {
+             if (rating.user_id === getUser().id) {
+             console.log(rating);  
+             }
+         }
     });
     const dislike = document.createElement('div');
     dislike.classList.add('dislike');

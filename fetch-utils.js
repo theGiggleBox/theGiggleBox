@@ -53,8 +53,8 @@ export async function fetchJokes() {
 }
 
 export async function fetchRatings() {
-    const resp = await client.from('jokes').select('*, joke_id (*), user_id (*)');
-    console.log(resp.data, 'jokes data');
+    const resp = await client.from('ratings').select('*, joke_id (*)');
+    console.log(resp.data, 'ratings data');
     return checkError(resp);
 }
 
