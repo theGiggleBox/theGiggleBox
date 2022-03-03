@@ -24,3 +24,36 @@ Additional considerations:
     -   What needs to live in a persistence layer?
 -   Is there some state we need to initialize?
 -   Ask: should any of this work be abstracted into functions? (i.e., is the work complicated? can it be resused?)
+
+
+////
+ // need section, genre, joke, ratings
+    const jokeWrapper = document.createElement('div');
+
+    const formContainer = document.createElement('div');
+    const editForm = document.createElement('form');
+    const inputField = document.createElement('input');
+    inputField.value = joke.joke_content;
+    
+    const genreSelect = document.createElement('select');
+    // render options to the select 
+    // renderOptions(genres, genreSelect);
+    // append our edit input and select to the form
+    // on submit of form, pass an object to our supabase to update
+    
+    const submit = document.createElement('button');
+  if (window.location.pathname === '/profile/') {
+        jokeContainer.addEventListener('click', () => {
+            jokeContainer.classList.add('hide'); 
+            
+        });
+    }
+        const editJoke = document.createElement('button');
+    editJoke.classList.add('edit');
+
+    const deleteJoke = document.createElement('button');
+    deleteJoke.classList.add('delete');
+
+    const editJokeContent = document.createElement('input');
+    editJokeContent.value = joke.joke_content;
+    editJokeContent.classList.add('hide');

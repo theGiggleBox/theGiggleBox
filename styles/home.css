@@ -1,1 +1,50 @@
 /* add home page styles here */
+.joke-wrapper {
+    border: 1px solid black;
+    min-width: 200px;
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    margin: 0 auto;
+}
+.joke-container {
+    border: 1px solid black;
+    min-width: 200px;
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    margin: 0 auto;
+}
+
+.genre {
+    font-weight: bold;
+}
+
+.like {
+    height: 1.5em;
+    width: 1.5em;
+    border: 1px solid black;
+    background-size: cover;
+    background-image: url(../assets/newlike.png);
+}
+
+.dislike {
+    height: 1.5em;
+    width: 1.5em;
+    border: 1px solid black;
+    background-size: cover;
+    background-image: url(../assets/newlike.png);
+    transform: rotate(180deg);
+}
+
+.ratings {
+    display: flex;
+    flex-direction: row;
+    width: 60px;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
