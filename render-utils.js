@@ -5,7 +5,6 @@ export function renderOptions(genres, location, id) {
         const option = document.createElement('option');
         option.value = genre.id;
         option.textContent = genre.genre;
-        // console.log('this is the id', id);
         if (genre.id === id) {
             option.selected = 'selected';
         }
@@ -28,13 +27,6 @@ export function renderJoke(joke) {
     const ratings = renderRatingDiv(joke);
     ratings.classList.add('ratings');
 
-    // const like = document.createElement('div');
-    // like.classList.add('like');
-
-    // const dislike = document.createElement('div');
-    // dislike.classList.add('dislike');
-
-    // ratings.append(like, dislike);
     jokeContainer.append(genre, jokeContent, ratings);
     return jokeContainer;
 }
@@ -42,30 +34,26 @@ export function renderJoke(joke) {
 export function renderRatingDiv(joke) {
     const div = document.createElement('div');
     const like = document.createElement('div');
-
+    
     like.classList.add('like');
+
     like.addEventListener('click', async () => {
+        // const user = getUser().id;
+        // if (!user) return;
         const fetchedRating = await fetchUserRating(joke.id);
-        const user = getUser().id;
-        if (!user) return;
         if (fetchedRating.length === 0) {
+
             const userRating = {
                 liked: true,
                 user_id: getUser().id,
                 joke_id: joke.id,
             };
             await createRating(userRating);
-            like.classList.add('liked');
+            like.style.backgroundImage = 'url(./assets/newlike.png)';
         } else if (fetchedRating.length > 0) {
             await deleteRating(joke.id);
-            like.classList.remove('liked');
-            /// enter delete function here
-            console.log('unliked');
+            like.style.backgroundImage = 'url(./assets/like.png)';
         }
-        // await createRating(userRating);
-        //if there is no user rating create a row in ratings
-        //if there is a rating then we want to update with the rating
-        console.log('length', fetchedRating.length);
     });
     div.append(like);
     return div;
