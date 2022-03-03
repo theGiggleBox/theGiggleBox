@@ -1,6 +1,5 @@
 /* add home page styles here */
 .joke-wrapper {
-    /* border: 1px solid black; */
     min-width: 200px;
     margin-top: 1em;
     display: flex;
@@ -10,19 +9,15 @@
 }
 .joke-container {
     border: 2px solid var(--color4);
-    /* background-color: rgba(101, 155, 144, 0.6); */
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: 5px;
-    /* color: rgb(2, 57, 50);  */
     color: var(--color2);
-    /* color: white;  */
     min-width: 200px;
     margin-top: 5px;
     display: flex;
     flex-direction: column;
     width: 50vw;
     padding: 5px;
-    /* margin: 0 auto; */
 }
 
 .genre {
@@ -32,7 +27,6 @@
 .like {
     height: 1.5em;
     width: 1.5em;
-    /* border: 1px solid black; */
     background-size: cover;
     background-image: url(../assets/newlike.png);
 }
@@ -40,7 +34,6 @@
 .dislike {
     height: 1.5em;
     width: 1.5em;
-    /* border: 1px solid black; */
     background-size: cover;
     background-image: url(../assets/newlike.png);
     transform: rotate(180deg);
@@ -54,5 +47,4 @@
     margin-left: 10px;
     margin-bottom: 5px;
     margin-top: 5px;
-    /* background-color: white; */
 }

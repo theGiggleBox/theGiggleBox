@@ -16,7 +16,6 @@ async function renderJokes() {
         jokeEl.append(ratingEl);
         jokeSection.append(jokeEl);
         ratingEl.addEventListener('click', async () => {
-            console.log('clicking test');
             if (joke.ratings && joke.ratings.length > 0){ 
                 await deleteRating(joke.id);
             } else {
@@ -29,6 +28,4 @@ async function renderJokes() {
 
 window.addEventListener('load', async () => {
     await renderJokes();
-    // await fetchUserJokes();
-    // console.log(jokes, 'jokes console log');
 });

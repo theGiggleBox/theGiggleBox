@@ -26,7 +26,6 @@ logInLogOut(signButton);
 window.addEventListener('load', async () => {
     await displayProfileJokes();
 });
-// console.log(window.location.pathname)
 
 function renderProfileJoke(joke, genres) {
     const jokeWrapper = document.createElement('div');
@@ -39,14 +38,10 @@ function renderProfileJoke(joke, genres) {
     const inputField = document.createElement('textarea');
     inputField.name = 'booger-edit';
     inputField.value = joke.joke_content;
-    // inputField.type = 'text';
     const genreSelectEl = document.createElement('select');
     genreSelectEl.name = 'genre-booger';
-    // genreSelectEl.textContent = joke.genre_id.genre;
     renderOptions(genres, genreSelectEl, joke.genre_id.id);
-    // genreSelectEl.value = joke.genre_id;
     const formSubmitButton = document.createElement('button');
-    // formSubmitButton.classList.add('submit-add');
     formSubmitButton.textContent = 'Save';
 
     editForm.append(genreSelectEl, inputField, formSubmitButton);
@@ -54,15 +49,12 @@ function renderProfileJoke(joke, genres) {
     editForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const data = new FormData(editForm);
-        // console.log(data.get('booger-edit'), 'data test content');
-        // console.log(data.get('genre-booger'), 'data test genre');
         const editObject = {
             joke_content: data.get('booger-edit'),
             genre_id: data.get('genre-booger'),
             id: joke.id,
         };
         await updateJoke(editObject);
-        // location.reload();
 
         await displayProfileJokes();
     });
@@ -73,19 +65,15 @@ function renderProfileJoke(joke, genres) {
         console.log(joke.id, 'joke id log');
         const deleteTest = await deleteJokeRatings(joke.id);
         console.log(deleteTest, 'delete ratings test');
-        // await deleteJokeRatings(joke.id);
 
         await deleteJoke(joke.id);
-        // location.reload();
         await displayProfileJokes();
     });
     formContainer.append(editForm, deleteButton);
 
     jokeContainer.addEventListener('click', () => {
         jokeContainer.classList.add('hide');
-        // jokeContainer.classList.remove('joke-container');
         formContainer.classList.remove('hide');
-        // const deleteButton = document.createElement('button');
     });
 
     jokeWrapper.append(jokeContainer, formContainer);

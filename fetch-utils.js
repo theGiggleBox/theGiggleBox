@@ -10,7 +10,6 @@ export function getUser() {
 
 export function checkAuth() {
     const user = getUser();
-
     if (!user) location.replace('../auth');
 }
 
@@ -22,19 +21,16 @@ export function redirectIfLoggedIn() {
 
 export async function signupUser(email, password) {
     const response = await client.auth.signUp({ email, password });
-
     return response.user;
 }
 
 export async function signInUser(email, password) {
     const response = await client.auth.signIn({ email, password });
-
     return response.user;
 }
 
 export async function logout() {
     await client.auth.signOut();
-
     return (window.location.href = '/');
 }
 
@@ -68,7 +64,6 @@ export async function fetchUserRating(id) {
 }
 
 export async function fetchUserJokes() {
-    // const user_id = getUser().id;
     const resp = await client
         .from('jokes')
         .select('*, genre_id (*)')
@@ -76,17 +71,9 @@ export async function fetchUserJokes() {
     return checkError(resp);
 }
 
-// on click like / dislike
-// grab the id of the joke, insert a rating into the ratings table
-// insert the joke id, id of the user, rating
-
-// export async function rate(rating){
-//     const resp = await client.from('ratings').insert({ joke_id: rating.id, })
-// }
-
 export async function getGenres() {
     const resp = await client.from('genres').select();
-    // console.log('in getGenres', resp.data);
+
     return checkError(resp);
 }
 
@@ -103,7 +90,7 @@ export async function deleteJokeRatings(id) {
 
 export async function deleteJoke(id) {
     const resp = await client.from('jokes').delete().match({ id });
-    // console.log(id, 'joke id');
+
     return checkError(resp);
 }
 
@@ -112,8 +99,6 @@ export async function updateJoke(object) {
     const resp = await client.from('jokes').update(object).match({ id });
     return checkError(resp);
 }
-
-/// sign up / log out button function
 
 export function logInLogOut(element) {
     const user = getUser();

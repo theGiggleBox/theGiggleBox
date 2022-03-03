@@ -5,19 +5,15 @@ form {
 
 #form {
     border: 2px solid var(--color4);
-    /* background-color: rgba(101, 155, 144, 0.6); */
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: 5px;
-    /* color: rgb(2, 57, 50);  */
     color: var(--color2);
-    /* color: white;  */
     min-width: 200px;
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     width: 50vw;
     padding: 5px;
-    /* margin: 0 auto; */
 }
 
 input {
@@ -34,9 +30,7 @@ label {
 button {
     display: flex;
     align-self: center;
-    /* justify-self: center; */
     width: 25%;
-    /* align-items: center; */
     text-align: center;
     justify-content: center;
     color: var(--color2);
