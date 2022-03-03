@@ -35,7 +35,7 @@ export async function signInUser(email, password) {
 export async function logout() {
     await client.auth.signOut();
 
-    return (window.location.href = '../');
+    return (window.location.href = '/');
 }
 
 function checkError({ data, error }) {
@@ -65,8 +65,8 @@ export async function fetchUserRating(id) {
 }
 
 export async function fetchUserJokes() {
-    const user_id = getUser().id;
-    const resp = await client.from('jokes').select('*, genre_id (*)').match({ user_id });
+    // const user_id = getUser().id;
+    const resp = await client.from('jokes').select('*, genre_id (*)').match({ user_id:getUser().id });
     return checkError(resp);
 }
 
@@ -109,6 +109,7 @@ export function logInLogOut(element) {
         element.textContent = 'Log Out';
         element.addEventListener('click', () => {
             logout();
+            location.replace('/');
         });
     } else if (window.location.pathname === '/') {
         element.textContent = 'Sign In / Sign Up';

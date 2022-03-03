@@ -46,6 +46,8 @@ export function renderRatingDiv(joke) {
     like.classList.add('like');
     like.addEventListener('click', async () => {
         const fetchedRating = await fetchUserRating(joke.id);
+        const user = getUser().id;
+        if (!user) return;
         if (fetchedRating.length === 0) {
             const userRating = {
                 liked: true,
