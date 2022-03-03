@@ -5,6 +5,7 @@ textarea {
     align-items: flex-start; */
     /* justify-content: center; */
     text-overflow: wrap;
+    /* font-family: sans-serif; */
 }
 .joke-container {
     border: none;
