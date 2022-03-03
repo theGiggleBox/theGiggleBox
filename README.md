@@ -1,59 +1,10 @@
-## The Golden Rule:
+## The Giggle Box
+# DEV Team
+* Yovana Pelayo-- [GitHub] (https://github.com/yovana-pelayo) | [LinkedIn] (https://www.linkedin.com/in/yovana-pelayo-a4403b232/)
+* Mary Martinez-- [GitHub] (https://github.com/mary-martinez) | [LinkedIn] (www.linkedin.com/in/mary-martinez-6624a5b4)
+* Jace Keyes-- [GitHub] (https://github.com/JaceGK1999) | [LinkedIn] (https://www.linkedin.com/in/jace-keyes-83190322b/)
+* Denver Michaels-- [GitHub] (https://github.com/denvermccarthy) | [LinkedIn] (https://www.linkedin.com/in/yovana-pelayo-a4403b232/)
+* Andy Mascaro-- [GitHub] (https://github.com/Andy-Mascaro) | [LinkedIn] (https://www.linkedin.com/in/andy-mascaro-345419219/)
 
-🦸 🦸‍♂️ `Stop starting and start finishing.` 🏁
-
-If you work on more than one feature at a time, you are guaranteed to multiply your bugs and your anxiety.
-
-## Making a plan
-
-1. **Make a drawing of your app. Simple "wireframes"**
-1. **Once you have a drawing, name the HTML elements you'll need to realize your vision**
-1. **For each HTML element ask: Why do I need this?**
-1. **Once we know _why_ we need each element, think about how to implement the "Why" as a "How"**
-1. **Find all the 'events' (user clicks, form submit, on load etc) in your app. Ask one by one, "What happens when" for each of these events. Does any state change?**
-1. **Think about how to validate each of your features according to a Definition of Done**
-1. **Consider what features _depend_ on what other features. Use this dependency logic to figure out what order to complete tasks.**
-
-Additional considerations:
-
--   Ask: which of your HTML elements need to be hard coded, and which need to be dynamically generated?
--   Consider your data model.
-    -   What kinds of objects (i.e., Dogs, Friends, Todos, etc) will you need?
-    -   What are the key/value pairs?
-    -   What arrays might you need?
-    -   What needs to live in a persistence layer?
--   Is there some state we need to initialize?
--   Ask: should any of this work be abstracted into functions? (i.e., is the work complicated? can it be resused?)
-
-
-////
- // need section, genre, joke, ratings
-    const jokeWrapper = document.createElement('div');
-
-    const formContainer = document.createElement('div');
-    const editForm = document.createElement('form');
-    const inputField = document.createElement('input');
-    inputField.value = joke.joke_content;
-    
-    const genreSelect = document.createElement('select');
-    // render options to the select 
-    // renderOptions(genres, genreSelect);
-    // append our edit input and select to the form
-    // on submit of form, pass an object to our supabase to update
-    
-    const submit = document.createElement('button');
-  if (window.location.pathname === '/profile/') {
-        jokeContainer.addEventListener('click', () => {
-            jokeContainer.classList.add('hide'); 
-            
-        });
-    }
-        const editJoke = document.createElement('button');
-    editJoke.classList.add('edit');
-
-    const deleteJoke = document.createElement('button');
-    deleteJoke.classList.add('delete');
-
-    const editJokeContent = document.createElement('input');
-    editJokeContent.value = joke.joke_content;
-    editJokeContent.classList.add('hide');
+# What is The Giggle Box? 
+Need a pick-me-up? Come to The Giggle Box, where we've got jokes sure to make you smile! Add your own jokes to share joy with others. 
