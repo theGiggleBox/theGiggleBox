@@ -47,7 +47,7 @@ function checkError({ data, error }) {
 //----------------------------------------------------------------------
 
 export async function fetchJokes() {
-    const resp = await client.from('jokes').select('*, genre_id (*)');
+    const resp = await client.from('jokes').select('*, genre_id (*), ratings(*)');
     console.log(resp.data, 'jokes data');
     return checkError(resp);
 }
@@ -125,8 +125,8 @@ export function logInLogOut(element) {
     }
 }
 
-export async function createRating(object) {
-    const resp = await client.from('ratings').insert(object);
+export async function createRating(id) {
+    const resp = await client.from('ratings').insert({ joke_id: id, user_id: getUser().id, liked:true });
     return checkError(resp);
 }
 export async function deleteRating(id) {
