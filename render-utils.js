@@ -1,4 +1,4 @@
-import { } from './fetch-utils.js';
+import {} from './fetch-utils.js';
 
 export function renderOptions(genres, location, id) {
     for (let genre of genres) {
@@ -31,11 +31,9 @@ export function renderJoke(joke) {
 export function renderRatingDiv(joke) {
     const div = document.createElement('div');
     const like = document.createElement('div');
-    
+
     like.classList.add('like');
     if (joke.ratings && joke.ratings.length > 0 && joke.ratings[0].liked) {
-
-       
         like.style.backgroundImage = 'url(../assets/like.png)';
     } else {
         like.style.backgroundImage = 'url(../assets/newlike.png)';

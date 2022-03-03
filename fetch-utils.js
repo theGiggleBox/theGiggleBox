@@ -95,6 +95,12 @@ export async function createJoke(newJoke) {
     return checkError(resp);
 }
 
+export async function deleteJokeRatings(id) {
+    const resp = await client.from('ratings').delete().eq('joke_id', id);
+    console.log(resp, 'ratings id of joke');
+    return checkError(resp);
+}
+
 export async function deleteJoke(id) {
     const resp = await client.from('jokes').delete().match({ id });
     // console.log(id, 'joke id');
@@ -129,7 +135,7 @@ export function logInLogOut(element) {
         });
     }
 }
-
+// ------------------------ your ratings ---------------------------------------
 export async function createRating(id) {
     const resp = await client
         .from('ratings')
