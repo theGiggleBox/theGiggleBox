@@ -70,8 +70,7 @@ h2 {
     /* text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2); */
     font-family: sans-serif;
     font-size: 0.9rem;
-    color: rgb(3, 79, 69); 
-
+    color: rgb(3, 79, 69);
 }
 
 .gutter-right {
@@ -151,7 +150,7 @@ footer {
     /* background-color: rgba(196, 252, 240, 0.4); */
     background-color: rgba(0, 107, 94, 0.5);
     /* color: rgb(2, 57, 50);  */
-    color: white; 
+    color: white;
 
     /* color: black; */
     /* background-color: rgba(0, 0, 0, 0.6);
@@ -198,4 +197,8 @@ section {
 } */
 .hide * {
     display: none;
+}
+
+.liked {
+    background-color: violet;
 }
