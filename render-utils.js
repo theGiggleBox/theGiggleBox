@@ -1,4 +1,4 @@
-import { createRating, deleteJoke, deleteRating, fetchUserRating, getUser } from './fetch-utils.js';
+import { createRating, deleteRating, fetchUserRating, getUser } from './fetch-utils.js';
 
 export function renderOptions(genres, location, id) {
     for (let genre of genres) {
@@ -39,24 +39,21 @@ export function renderJoke(joke) {
     return jokeContainer;
 }
 
-
-export function renderRatingDiv(joke){
+export function renderRatingDiv(joke) {
     const div = document.createElement('div');
     const like = document.createElement('div');
 
     like.classList.add('like');
-    like.addEventListener('click', async () =>{
+    like.addEventListener('click', async () => {
         const fetchedRating = await fetchUserRating(joke.id);
         if (fetchedRating.length === 0) {
             const userRating = {
                 liked: true,
                 user_id: getUser().id,
-                joke_id: joke.id
-
+                joke_id: joke.id,
             };
             await createRating(userRating);
-            like.classList.add('liked');    
-
+            like.classList.add('liked');
         } else if (fetchedRating.length > 0) {
             await deleteRating(joke.id);
             like.classList.remove('liked');
@@ -70,5 +67,4 @@ export function renderRatingDiv(joke){
     });
     div.append(like);
     return div;
-} 
-
+}

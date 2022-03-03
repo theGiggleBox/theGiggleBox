@@ -1,4 +1,4 @@
-import { fetchJokes, fetchUserJokes, logout, logInLogOut, fetchRatings } from './fetch-utils.js';
+import { fetchJokes, fetchUserJokes, logInLogOut, fetchRatings } from './fetch-utils.js';
 import { renderJoke } from './render-utils.js';
 
 const jokeSection = document.getElementById('joke-section');
@@ -41,7 +41,6 @@ async function renderJokes() {
         jokeSection.append(jokeEl);
     }
 }
-
 
 window.addEventListener('load', async () => {
     await renderJokes();
