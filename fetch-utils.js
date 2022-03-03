@@ -52,6 +52,18 @@ export async function fetchJokes() {
     return checkError(resp);
 }
 
+export async function fetchRatings() {
+    const resp = await client.from('ratings').select('*, joke_id (*)');
+    console.log(resp.data, 'ratings data');
+    return checkError(resp);
+}
+
+export async function fetchUserRating(id) {
+    const resp = await client.from('ratings').select('*').match({ joke_id: id, user_id: getUser().id });
+    console.log(resp.data, 'user rating');
+    return checkError(resp);
+}
+
 export async function fetchUserJokes() {
     const user_id = getUser().id;
     const resp = await client.from('jokes').select('*, genre_id (*)').match({ user_id });
@@ -87,4 +99,37 @@ export async function updateJoke(object) {
     const id = object.id;
     const resp = await client.from('jokes').update(object).match({ id });
     return checkError(resp);
+}
+
+/// sign up / log out button function
+
+export function logInLogOut(element) {
+    const user = getUser();
+    if (user) {
+        element.textContent = 'Log Out';
+        element.addEventListener('click', () => {
+            logout();
+        });
+    } else if (window.location.pathname === '/') {
+        element.textContent = 'Sign In / Sign Up';
+        element.addEventListener('click', () => {
+            location.replace('./auth');
+        });
+    }
+    else {
+        element.textContent = 'Sign In / Sign Up';
+        element.addEventListener('click', () => {
+            location.replace('../auth');
+        });
+    }
+}
+
+export async function createRating(object) {
+    const resp = await client.from('ratings').insert(object);
+    return checkError(resp);
+}
+export async function deleteRating(id) {
+    const resp = await client.from('ratings').delete().match({ joke_id: id, user_id: getUser().id });
+    
+    console.log(resp.data);
 }
