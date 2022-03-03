@@ -128,3 +128,8 @@ export async function createRating(object) {
     const resp = await client.from('ratings').insert(object);
     return checkError(resp);
 }
+export async function deleteRating(id) {
+    const resp = await client.from('ratings').delete().match({ joke_id: id, user_id: getUser().id });
+    
+    console.log(resp.data);
+}

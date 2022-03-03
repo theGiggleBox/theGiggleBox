@@ -1,4 +1,4 @@
-import { createRating, fetchUserRating, getUser } from './fetch-utils.js';
+import { createRating, deleteJoke, deleteRating, fetchUserRating, getUser } from './fetch-utils.js';
 
 export function renderOptions(genres, location, id) {
     for (let genre of genres) {
@@ -52,9 +52,14 @@ export function renderRatingDiv(joke){
                 liked: true,
                 user_id: getUser().id,
                 joke_id: joke.id
+
             };
-            await createRating(userRating);    
+            await createRating(userRating);
+            like.classList.add('liked');    
+
         } else if (fetchedRating.length > 0) {
+            await deleteRating(joke.id);
+            like.classList.remove('liked');
             /// enter delete function here
             console.log('unliked');
         }

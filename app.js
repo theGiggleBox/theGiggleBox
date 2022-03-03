@@ -3,7 +3,6 @@ import { renderJoke } from './render-utils.js';
 
 const jokeSection = document.getElementById('joke-section');
 const signButton = document.getElementById('sign-up');
-const logoutButton = document.getElementById('logout');
 // const joke = { joke_content: 'this is a joke, get rekt', genre: 'joke genre', id: 1 };
 logInLogOut(signButton);
 //Make async
@@ -43,9 +42,6 @@ async function renderJokes() {
     }
 }
 
-logoutButton.addEventListener('click', () => {
-    logout();
-});
 
 window.addEventListener('load', async () => {
     await renderJokes();
