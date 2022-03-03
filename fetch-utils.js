@@ -11,7 +11,7 @@ export function getUser() {
 export function checkAuth() {
     const user = getUser();
 
-    if (!user) location.replace('../');
+    if (!user) location.replace('../auth');
 }
 
 export function redirectIfLoggedIn() {
@@ -59,14 +59,20 @@ export async function fetchRatings() {
 }
 
 export async function fetchUserRating(id) {
-    const resp = await client.from('ratings').select('*').match({ joke_id: id, user_id: getUser().id });
+    const resp = await client
+        .from('ratings')
+        .select('*')
+        .match({ joke_id: id, user_id: getUser().id });
     console.log(resp.data, 'user rating');
     return checkError(resp);
 }
 
 export async function fetchUserJokes() {
     // const user_id = getUser().id;
-    const resp = await client.from('jokes').select('*, genre_id (*)').match({ user_id:getUser().id });
+    const resp = await client
+        .from('jokes')
+        .select('*, genre_id (*)')
+        .match({ user_id: getUser().id });
     return checkError(resp);
 }
 
@@ -116,8 +122,7 @@ export function logInLogOut(element) {
         element.addEventListener('click', () => {
             location.replace('./auth');
         });
-    }
-    else {
+    } else {
         element.textContent = 'Sign In / Sign Up';
         element.addEventListener('click', () => {
             location.replace('../auth');
@@ -126,11 +131,16 @@ export function logInLogOut(element) {
 }
 
 export async function createRating(id) {
-    const resp = await client.from('ratings').insert({ joke_id: id, user_id: getUser().id, liked:true });
+    const resp = await client
+        .from('ratings')
+        .insert({ joke_id: id, user_id: getUser().id, liked: true });
     return checkError(resp);
 }
 export async function deleteRating(id) {
-    const resp = await client.from('ratings').delete().match({ joke_id: id, user_id: getUser().id });
-    
+    const resp = await client
+        .from('ratings')
+        .delete()
+        .match({ joke_id: id, user_id: getUser().id });
+
     console.log(resp.data);
 }

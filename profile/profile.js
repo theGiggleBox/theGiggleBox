@@ -1,6 +1,8 @@
-import { fetchUserJokes, getGenres, logInLogOut } from '../fetch-utils.js';
+import { checkAuth, fetchUserJokes, getGenres, logInLogOut } from '../fetch-utils.js';
 import { renderJoke, renderOptions } from '../render-utils.js';
 import { deleteJoke, updateJoke } from '../fetch-utils.js';
+
+checkAuth();
 
 const jokeSection = document.getElementById('joke-section');
 const signButton = document.getElementById('sign-up');
@@ -11,13 +13,12 @@ async function displayProfileJokes() {
     for (const joke of userJokes) {
         const jokeEl = renderProfileJoke(joke, genres);
         jokeSection.append(jokeEl);
-
     }
 }
 
 logInLogOut(signButton);
 window.addEventListener('load', async () => {
-    await displayProfileJokes();   
+    await displayProfileJokes();
 });
 // console.log(window.location.pathname)
 
@@ -66,7 +67,7 @@ function renderProfileJoke(joke, genres) {
         await deleteJoke(joke.id);
         // location.reload();
         await displayProfileJokes();
-    }); 
+    });
     formContainer.append(editForm, deleteButton);
 
     jokeContainer.addEventListener('click', () => {
