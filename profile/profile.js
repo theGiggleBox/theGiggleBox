@@ -62,9 +62,7 @@ function renderProfileJoke(joke, genres) {
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'delete';
     deleteButton.addEventListener('click', async () => {
-        console.log(joke.id, 'joke id log');
-        const deleteTest = await deleteJokeRatings(joke.id);
-        console.log(deleteTest, 'delete ratings test');
+        await deleteJokeRatings(joke.id);
 
         await deleteJoke(joke.id);
         await displayProfileJokes();

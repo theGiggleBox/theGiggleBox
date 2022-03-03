@@ -44,13 +44,11 @@ function checkError({ data, error }) {
 
 export async function fetchJokes() {
     const resp = await client.from('jokes').select('*, genre_id (*), ratings(*)');
-    console.log(resp.data, 'jokes data');
     return checkError(resp);
 }
 
 export async function fetchRatings() {
     const resp = await client.from('ratings').select('*, joke_id (*)');
-    console.log(resp.data, 'ratings data');
     return checkError(resp);
 }
 
@@ -59,7 +57,6 @@ export async function fetchUserRating(id) {
         .from('ratings')
         .select('*')
         .match({ joke_id: id, user_id: getUser().id });
-    console.log(resp.data, 'user rating');
     return checkError(resp);
 }
 
@@ -84,7 +81,6 @@ export async function createJoke(newJoke) {
 
 export async function deleteJokeRatings(id) {
     const resp = await client.from('ratings').delete().eq('joke_id', id);
-    console.log(resp, 'ratings id of joke');
     return checkError(resp);
 }
 
@@ -133,5 +129,5 @@ export async function deleteRating(id) {
         .delete()
         .match({ joke_id: id, user_id: getUser().id });
 
-    console.log(resp.data);
+    return checkError(resp);
 }
