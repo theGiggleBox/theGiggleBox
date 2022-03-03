@@ -1,5 +1,7 @@
-import { createRating, deleteRating, fetchJokes, getUser, logInLogOut } from './fetch-utils.js';
+import { checkAuth, createRating, deleteRating, fetchJokes, getUser, logInLogOut } from './fetch-utils.js';
 import { renderJoke, renderRatingDiv } from './render-utils.js';
+
+checkAuth();
 
 const jokeSection = document.getElementById('joke-section');
 const signButton = document.getElementById('sign-up');
