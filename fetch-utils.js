@@ -103,7 +103,7 @@ export function logInLogOut(element) {
         element.textContent = 'Log Out';
         element.addEventListener('click', () => {
             logout();
-            location.replace('/');
+            location.replace('./auth');
         });
     } else if (window.location.pathname === '/') {
         element.textContent = 'Sign In / Sign Up';

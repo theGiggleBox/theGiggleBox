@@ -36,10 +36,10 @@ function renderProfileJoke(joke, genres) {
     formContainer.classList.add('hide');
     const editForm = document.createElement('form');
     const inputField = document.createElement('textarea');
-    inputField.name = 'booger-edit';
+    inputField.name = 'text-field';
     inputField.value = joke.joke_content;
     const genreSelectEl = document.createElement('select');
-    genreSelectEl.name = 'genre-booger';
+    genreSelectEl.name = 'select';
     renderOptions(genres, genreSelectEl, joke.genre_id.id);
     const formSubmitButton = document.createElement('button');
     formSubmitButton.textContent = 'Save';
@@ -50,8 +50,8 @@ function renderProfileJoke(joke, genres) {
         e.preventDefault();
         const data = new FormData(editForm);
         const editObject = {
-            joke_content: data.get('booger-edit'),
-            genre_id: data.get('genre-booger'),
+            joke_content: data.get('text-field'),
+            genre_id: data.get('select'),
             id: joke.id,
         };
         await updateJoke(editObject);
