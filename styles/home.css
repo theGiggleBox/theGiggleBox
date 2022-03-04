@@ -31,14 +31,6 @@
     background-image: url(../assets/newlike.png);
 }
 
-.dislike {
-    height: 1.5em;
-    width: 1.5em;
-    background-size: cover;
-    background-image: url(../assets/newlike.png);
-    transform: rotate(180deg);
-}
-
 .ratings {
     display: flex;
     flex-direction: row;
