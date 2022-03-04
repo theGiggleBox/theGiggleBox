@@ -10,8 +10,7 @@ export function getUser() {
 
 export function checkAuth() {
     const user = getUser();
-
-    if (!user) location.replace('../');
+    if (!user) location.replace('../auth');
 }
 
 export function redirectIfLoggedIn() {
@@ -22,20 +21,17 @@ export function redirectIfLoggedIn() {
 
 export async function signupUser(email, password) {
     const response = await client.auth.signUp({ email, password });
-
     return response.user;
 }
 
 export async function signInUser(email, password) {
     const response = await client.auth.signIn({ email, password });
-
     return response.user;
 }
 
 export async function logout() {
     await client.auth.signOut();
-
-    return (window.location.href = '../');
+    return (window.location.href = '/');
 }
 
 function checkError({ data, error }) {
@@ -47,40 +43,35 @@ function checkError({ data, error }) {
 //----------------------------------------------------------------------
 
 export async function fetchJokes() {
-    const resp = await client.from('jokes').select('*, genre_id (*)');
-    console.log(resp.data, 'jokes data');
+    const resp = await client.from('jokes').select('*, genre_id (*), ratings(*)').order('id');
+    console.log(resp, 'fetchJokes');
     return checkError(resp);
 }
 
 export async function fetchRatings() {
     const resp = await client.from('ratings').select('*, joke_id (*)');
-    console.log(resp.data, 'ratings data');
     return checkError(resp);
 }
 
 export async function fetchUserRating(id) {
-    const resp = await client.from('ratings').select('*').match({ joke_id: id, user_id: getUser().id });
-    console.log(resp.data, 'user rating');
+    const resp = await client
+        .from('ratings')
+        .select('*')
+        .match({ joke_id: id, user_id: getUser().id });
     return checkError(resp);
 }
 
 export async function fetchUserJokes() {
-    const user_id = getUser().id;
-    const resp = await client.from('jokes').select('*, genre_id (*)').match({ user_id });
+    const resp = await client
+        .from('jokes')
+        .select('*, genre_id (*)')
+        .match({ user_id: getUser().id });
     return checkError(resp);
 }
 
-// on click like / dislike
-// grab the id of the joke, insert a rating into the ratings table
-// insert the joke id, id of the user, rating
-
-// export async function rate(rating){
-//     const resp = await client.from('ratings').insert({ joke_id: rating.id, })
-// }
-
 export async function getGenres() {
     const resp = await client.from('genres').select();
-    // console.log('in getGenres', resp.data);
+
     return checkError(resp);
 }
 
@@ -89,9 +80,14 @@ export async function createJoke(newJoke) {
     return checkError(resp);
 }
 
+export async function deleteJokeRatings(id) {
+    const resp = await client.from('ratings').delete().eq('joke_id', id);
+    return checkError(resp);
+}
+
 export async function deleteJoke(id) {
     const resp = await client.from('jokes').delete().match({ id });
-    // console.log(id, 'joke id');
+
     return checkError(resp);
 }
 
@@ -101,35 +97,38 @@ export async function updateJoke(object) {
     return checkError(resp);
 }
 
-/// sign up / log out button function
-
 export function logInLogOut(element) {
     const user = getUser();
     if (user) {
         element.textContent = 'Log Out';
         element.addEventListener('click', () => {
             logout();
+            location.replace('/');
         });
     } else if (window.location.pathname === '/') {
         element.textContent = 'Sign In / Sign Up';
         element.addEventListener('click', () => {
             location.replace('./auth');
         });
-    }
-    else {
+    } else {
         element.textContent = 'Sign In / Sign Up';
         element.addEventListener('click', () => {
             location.replace('../auth');
         });
     }
 }
-
-export async function createRating(object) {
-    const resp = await client.from('ratings').insert(object);
+// ------------------------ your ratings ---------------------------------------
+export async function createRating(id) {
+    const resp = await client
+        .from('ratings')
+        .insert({ joke_id: id, user_id: getUser().id, liked: true });
     return checkError(resp);
 }
 export async function deleteRating(id) {
-    const resp = await client.from('ratings').delete().match({ joke_id: id, user_id: getUser().id });
-    
-    console.log(resp.data);
+    const resp = await client
+        .from('ratings')
+        .delete()
+        .match({ joke_id: id, user_id: getUser().id });
+
+    return checkError(resp);
 }

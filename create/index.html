@@ -12,15 +12,18 @@
         <link rel="stylesheet" href="../styles/reset.css" />
         <link rel="stylesheet" href="../styles/style.css" />
         <link rel="stylesheet" href="./create.css" />
-        <title>Document</title>
+        <title>Add Joke</title>
     </head>
     <body>
         <header>
-            <a class="buttons" href="/">Home</a>
+            <a class="button" href="/">Home</a>
             <a class="button" href="/profile/"><div>Profile</div></a>
             <a class="button" href="/about/"><div>About Creators</div></a>
         </header>
         <main>
+            <h1>You Got Jokes?</h1>
+            <div id="logo">
+            </div>
             <form id="form">
                 <label for="genre-select"
                     >Select your genre:
@@ -30,7 +33,7 @@
                 </label>
                 <label for="text-box"
                     >Type your joke:
-                    <input type="text" name="text-box" />
+                    <textarea type="text" name="text-box" > </textarea>
                 </label>
                 <button>Submit</button>
             </form>
