@@ -43,7 +43,7 @@ function checkError({ data, error }) {
 //----------------------------------------------------------------------
 
 export async function fetchJokes() {
-    const resp = await client.from('jokes').select('*, genre_id (*), ratings(*)').order('id');
+    const resp = await client.from('jokes').select('*, genre_id (*), ratings(*)').order('id', { ascending: false });
     console.log(resp, 'fetchJokes');
     return checkError(resp);
 }
