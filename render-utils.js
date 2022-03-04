@@ -1,5 +1,3 @@
-import {} from './fetch-utils.js';
-
 export function renderOptions(genres, location, id) {
     for (let genre of genres) {
         const option = document.createElement('option');
