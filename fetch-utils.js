@@ -43,21 +43,10 @@ function checkError({ data, error }) {
 //----------------------------------------------------------------------
 
 export async function fetchJokes() {
-    const resp = await client.from('jokes').select('*, genre_id (*), ratings(*)').order('id', { ascending: false });
-    console.log(resp, 'fetchJokes');
-    return checkError(resp);
-}
-
-export async function fetchRatings() {
-    const resp = await client.from('ratings').select('*, joke_id (*)');
-    return checkError(resp);
-}
-
-export async function fetchUserRating(id) {
     const resp = await client
-        .from('ratings')
-        .select('*')
-        .match({ joke_id: id, user_id: getUser().id });
+        .from('jokes')
+        .select('*, genre_id (*), ratings(*)')
+        .order('id', { ascending: false });
     return checkError(resp);
 }
 
@@ -97,6 +86,7 @@ export async function updateJoke(object) {
     return checkError(resp);
 }
 
+// this probably belongs in render-utils
 export function logInLogOut(element) {
     const user = getUser();
     if (user) {

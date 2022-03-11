@@ -32,6 +32,8 @@ function renderProfileJoke(joke, genres) {
     jokeWrapper.classList.add('joke-wrapper');
     const jokeContainer = renderJoke(joke);
 
+    // would love to see this refactored into render functions
+    // i think it would make this function less difficult to understand
     const formContainer = document.createElement('div');
     formContainer.classList.add('hide');
     const editForm = document.createElement('form');
